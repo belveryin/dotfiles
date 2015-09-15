@@ -12,3 +12,7 @@ DOTFILES_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 # Add symlinks
 ln -sfv "$DOTFILES_DIR/.bash_profile" ~
 ln -sfv "$DOTFILES_DIR/.vimrc" ~
+
+git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+
+vim +PluginInstall +qall
