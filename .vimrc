@@ -18,6 +18,8 @@ Plugin 'tpope/vim-unimpaired'
 Plugin 'tpope/vim-repeat'
 Plugin 'maksimr/vim-jsbeautify'
 Plugin 'tpope/vim-surround'
+" Plugin 'jelera/vim-javascript-syntax'
+Plugin 'scrooloose/syntastic'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -71,8 +73,20 @@ inoremap <right> <nop>
 nnoremap j gj
 nnoremap k gk
 
+" disable gui options
+if has('gui_running')
+    :set guioptions-=m  "remove menu bar
+    :set guioptions-=T  "remove toolbar
+    :set guioptions-=r  "remove right-hand scroll bar
+    :set guioptions-=L  "remove left-hand scroll bar
+    " maximize window on startup
+    " Maximize gvim window (for an alternative on Windows, see simalt below).
+    :set lines=999
+    :set columns=999
+endif
+
 "change leader to ,
-let mapleader = "," 
+let mapleader = ","
 
 "" vimrc
 "map vimrc editing
@@ -87,20 +101,62 @@ nmap <leader>nt :NERDTreeToggle <CR>
 "show bookmarks on startup
 let NERDTreeShowBookmarks=1
 
-"ack
-let g:ack_default_options = " -s -H --nocolor --nogroup --column --ignore-dir={build,docs,scratch,dist,bower_components,node_modules,coverage}"
-noremap <Leader>a :Ack! <cword><cr>
-
 "ctrlp
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
+let g:ctrlp_custom_ignore = '\v[\/](\.git|node_modules|bower_components|dist|coverage)$'
 
-if has('gui_running')
-    :set guioptions-=m  "remove menu bar
-    :set guioptions-=T  "remove toolbar
-    :set guioptions-=r  "remove right-hand scroll bar
-    :set guioptions-=L  "remove left-hand scroll bar
-endif
+"ack
+let g:ack_default_options = " -s -H --nocolor --nogroup --column --ignore-dir={build,docs,scratch,dist,bower_components,node_modules,coverage}"
+" let Ack_Exclude_Dirs = 'build docs'
+noremap <Leader>a :Ack! <cword><cr>
+nnoremap <Leader>f :Ack!<Space>
+let g:ackhighlight = 1
 
-"jshint2
-" let jshint2_save = 1
+"syntastic
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+
+" let g:syntastic_javascript_checkers=['jshint', 'jscs']
+let g:syntastic_javascript_checkers=['jshint']
+
+"jsbeautifier
+map <C-A-f> :call JsBeautify()<cr>
+
+" delete trailing spaces at the end of the line
+autocmd BufWritePre *.* :%s/\s\+$//e
+
+" force html syntax on hbs files
+au BufReadPost *.hbs set syntax=html
+
+
+"=====[ Highlight matches when jumping to next ]=============
+
+    " This rewires n and N to do the highlighing...
+    nnoremap <silent> n   n:call HLNext(0.4)<cr>
+    nnoremap <silent> N   N:call HLNext(0.4)<cr>
+
+    highlight WhiteOnRed ctermbg=red guibg=white
+
+    " OR ELSE just highlight the match in red...
+    function! HLNext (blinktime)
+        let [bufnum, lnum, col, off] = getpos('.')
+        let matchlen = strlen(matchstr(strpart(getline('.'),col-1),@/))
+        let target_pat = '\c\%#'.@/
+        let ring = matchadd('WhiteOnRed', target_pat, 101)
+        redraw
+        exec 'sleep ' . float2nr(a:blinktime * 500) . 'm'
+        call matchdelete(ring)
+        redraw
+    endfunction
+
+"====[ Make tabs, trailing whitespace, and non-breaking spaces visible ]======
+
+    exec "set listchars=tab:\uBB\uBB,trail:\uB7,nbsp:~"
+    set list
