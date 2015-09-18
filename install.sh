@@ -24,8 +24,7 @@ vim +PluginInstall +qall
 wget https://raw.githubusercontent.com/git/git/master/contrib/completion/git-prompt.sh -O ~/.git-prompt.sh
 
 # Install ack
-sudo perl -MCPAN -e shell
-cpan> install App::Ack
+sudo cpan App:Ack
 
 # Install nvm
 wget -qO- https://raw.githubusercontent.com/creationix/nvm/v0.26.1/install.sh | bash
@@ -33,5 +32,7 @@ source ~/.bashrc
 # Set stable as the default node version
 nvm install stable
 nvm alias default stable
+# Update npm
+npm install npm -g
 # Install jshint globally
 npm install -g jshint
