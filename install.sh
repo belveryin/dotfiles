@@ -29,7 +29,7 @@ cpan> install App::Ack
 
 # Install nvm
 wget -qO- https://raw.githubusercontent.com/creationix/nvm/v0.26.1/install.sh | bash
-source ~/.bashr
+source ~/.bashrc
 # Set stable as the default node version
 nvm install stable
 nvm alias default stable
