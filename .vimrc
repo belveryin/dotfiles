@@ -55,11 +55,11 @@ vmap <c-s> <Esc><c-s>gv
 imap <c-s> <Esc><c-s>
 
 " Bubble single lines
-nmap <C-Up> [e
-nmap <C-Down> ]e
+nmap <C-A-k> [e
+nmap <C-A-j> ]e
 " Bubble multiple lines
-vmap <C-Up> [egv
-vmap <C-Down> ]egv
+vmap <C-A-k> [egv
+vmap <C-A-j> ]egv
 
 "disable arrow keys
 nnoremap <up> <nop>
