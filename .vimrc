@@ -160,3 +160,16 @@ au BufReadPost *.hbs set syntax=html
 
     exec "set listchars=tab:\uBB\uBB,trail:\uB7,nbsp:~"
     set list
+
+
+" file type detect which detects node.js shebang thanks to:
+" https://github.com/mmalecki/vim-node.js
+    function! DetectNode()
+        if !did_filetype()
+            if getline(1) =~ '^#.*node'
+                setfiletype javascript
+            endif
+        endif
+    endfunction
+
+    :au BufNewFile,BufRead * call DetectNode()
