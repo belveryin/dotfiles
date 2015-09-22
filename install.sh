@@ -11,6 +11,7 @@ DOTFILES_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
 # Add symlinks
 ln -sfv "$DOTFILES_DIR/.bash_profile" ~
+ln -sfv "$DOTFILES_DIR/.profile" ~
 ln -sfv "$DOTFILES_DIR/.vimrc" ~
 ln -sfv "$DOTFILES_DIR/.gitignore" ~
 
