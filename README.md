@@ -1,5 +1,5 @@
 # dotfiles
 
-git clone https://github.com/belveryin/dotfiles.git
+git clone https://github.com/belveryin/dotfiles.git .dotfiles
 
 source dotfiles/install.sh
