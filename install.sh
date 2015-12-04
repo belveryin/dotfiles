@@ -15,6 +15,7 @@ DOTFILES_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
 # Add symlinks
 ln -sfv "$DOTFILES_DIR/.vimrc" ~
+ln -sfv "$DOTFILES_DIR/.psqlrc" ~
 ln -sfv "$DOTFILES_DIR/.gitignore" ~
 ln -sfv "$DOTFILES_DIR/.gitconfig" ~
 
