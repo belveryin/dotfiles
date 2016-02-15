@@ -3,9 +3,6 @@
 # install vim and meld
 sudo apt-get install vim vim-gnome meld
 
-# install other applications
-sudo apt-get install audacious
-
 # Get current dir (so run this script from anywhere)
 export DOTFILES_DIR EXTRA_DIR
 DOTFILES_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
@@ -44,5 +41,4 @@ git clone https://github.com/magicmonty/bash-git-prompt.git .bash-git-prompt
 # add line if it doesn't already exist
 grep -q -F 'source ~/.bash-git-prompt/gitprompt.sh' ~/.bashrc || echo 'source ~/.bash-git-prompt/gitprompt.sh' >> ~/.bashrc
 
-# Install git-prompt.sh to see the git branch on the prompt url: http://git-prompt.sh/
-# wget https://raw.githubusercontent.com/git/git/master/contrib/completion/git-prompt.sh -O ~/.git-prompt.sh
+source "$DOTFILES_DIR/apps.sh"
