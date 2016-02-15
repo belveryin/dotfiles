@@ -3,3 +3,5 @@
 [user]
 	email = belveryin@gmail.com
 	name = Daniel Martinez Maqueda
+[credential]
+	helper = cache
