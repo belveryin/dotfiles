@@ -42,3 +42,4 @@ git clone https://github.com/magicmonty/bash-git-prompt.git .bash-git-prompt
 grep -q -F 'source ~/.bash-git-prompt/gitprompt.sh' ~/.bashrc || echo 'source ~/.bash-git-prompt/gitprompt.sh' >> ~/.bashrc
 
 source "$DOTFILES_DIR/apps.sh"
+source "$DOTFILES_DIR/folders.sh"
