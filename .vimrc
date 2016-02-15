@@ -18,7 +18,7 @@ Plugin 'tpope/vim-unimpaired'
 Plugin 'tpope/vim-repeat'
 Plugin 'maksimr/vim-jsbeautify'
 Plugin 'tpope/vim-surround'
-" Plugin 'jelera/vim-javascript-syntax'
+Plugin 'jelera/vim-javascript-syntax'
 Plugin 'scrooloose/syntastic'
 
 " All of your Plugins must be added before the following line

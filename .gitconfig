@@ -1,2 +1,5 @@
 [merge]
     tool = meld
+[user]
+	email = belveryin@gmail.com
+	name = Daniel Martinez Maqueda
