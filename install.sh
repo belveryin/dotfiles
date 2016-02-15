@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # install vim and meld
-sudo apt-get install vim vim-gnome meld
+sudo apt-get install vim vim-gnome meld byobu
 
 # Get current dir (so run this script from anywhere)
 export DOTFILES_DIR EXTRA_DIR
