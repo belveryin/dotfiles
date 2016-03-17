@@ -104,10 +104,10 @@ let NERDTreeShowBookmarks=1
 "ctrlp
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
-let g:ctrlp_custom_ignore = '\v[\/](\.git|node_modules|bower_components|dist|coverage)$'
+let g:ctrlp_custom_ignore = '\v[\/](\.git|node_modules|bower_components|dist|coverage|tmp)$'
 
 "ack
-let g:ack_default_options = " -s -H --nocolor --nogroup --column --ignore-dir={build,docs,scratch,dist,bower_components,node_modules,coverage}"
+let g:ack_default_options = " -s -H --nocolor --nogroup --column --ignore-dir={build,docs,scratch,dist,bower_components,node_modules,coverage,tmp}"
 " let Ack_Exclude_Dirs = 'build docs'
 noremap <Leader>a :Ack! <cword><cr>
 nnoremap <Leader>f :Ack!<Space>
@@ -119,11 +119,10 @@ set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
 
 let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
+let g:syntastic_loc_list_height = 5
+let g:syntastic_auto_loc_list = 0
 let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-
-" let g:syntastic_javascript_checkers=['jshint', 'jscs']
+let g:syntastic_check_on_wq = 1
 let g:syntastic_javascript_checkers=['jshint']
 
 "jsbeautifier
