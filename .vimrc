@@ -124,6 +124,8 @@ let g:syntastic_auto_loc_list = 0
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 1
 let g:syntastic_javascript_checkers=['jshint']
+" use eslint if .eslintrc is found
+autocmd FileType javascript let b:syntastic_checkers = findfile('.eslintrc', '.;') != '' ? ['eslint'] : ['standard']
 
 "jsbeautifier
 map <C-A-f> :call JsBeautify()<cr>
