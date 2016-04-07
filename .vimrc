@@ -25,6 +25,15 @@ Plugin 'scrooloose/syntastic'
 call vundle#end()            " required
 filetype plugin indent on    " required
 
+" Getting rid of swap/backup/undo files in the current directory.
+" Create folders in your home dir:
+" .vim-backup
+" .vim-undo
+" .vim-swap
+set backupdir=$HOME/.vim-backup//
+set undodir=$HOME/.vim-undo//
+set directory=$HOME/.vim-swap//
+
 syntax enable
 "solarized
 if has('gui_running')
@@ -125,7 +134,7 @@ let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 1
 let g:syntastic_javascript_checkers=['jshint']
 " use eslint if .eslintrc is found
-autocmd FileType javascript let b:syntastic_checkers = findfile('.eslintrc', '.;') != '' ? ['eslint'] : ['standard']
+autocmd FileType javascript let b:syntastic_checkers = findfile('.eslintrc.js', '.;') != '' ? ['eslint'] : ['jshint']
 
 "jsbeautifier
 map <C-A-f> :call JsBeautify()<cr>

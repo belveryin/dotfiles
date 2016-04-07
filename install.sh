@@ -41,5 +41,17 @@ git clone https://github.com/magicmonty/bash-git-prompt.git .bash-git-prompt
 # add line if it doesn't already exist
 grep -q -F 'source ~/.bash-git-prompt/gitprompt.sh' ~/.bashrc || echo 'source ~/.bash-git-prompt/gitprompt.sh' >> ~/.bashrc
 
+# Getting rid of swap/backup/undo files in the current directory.
+# Create folders in the home dir:
+if [ ! -d "$HOME/.vim-backup" ]; then
+    mkdir ~/.vim-backup
+fi
+if [ ! -d "$HOME/.vim-undo" ]; then
+    mkdir ~/.vim-undo
+fi
+if [ ! -d "$HOME/.vim-swap" ]; then
+    mkdir ~/.vim-swap
+fi
+
 source "$DOTFILES_DIR/apps.sh"
 source "$DOTFILES_DIR/folders.sh"
