@@ -54,4 +54,4 @@ if [ ! -d "$HOME/.vim-swap" ]; then
 fi
 
 source "$DOTFILES_DIR/apps.sh"
-source "$DOTFILES_DIR/folders.sh"
+#source "$DOTFILES_DIR/folders.sh"
