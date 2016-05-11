@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # install other applications
-sudo apt-get install audacious
+sudo apt-get -y install audacious smplayer
 
 # install chrome
 if ! hash google-chrome; then
@@ -9,11 +9,4 @@ if ! hash google-chrome; then
     wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
     sudo dpkg -i google-chrome*.deb
     rm google-chrome-stable_current_amd64.deb
-fi
-
-# smplayer
-if ! hash smplayer; then
-    sudo add-apt-repository ppa:rvm/smplayer
-    sudo apt-get update
-    sudo apt-get install smplayer smplayer-themes smplayer-skins
 fi

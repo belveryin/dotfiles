@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
-# install vim and meld
-sudo apt-get install vim vim-gnome meld byobu
+# install vim meld byobu
+sudo apt-get install -y vim vim-gnome meld byobu
 
 # Get current dir (so run this script from anywhere)
 export DOTFILES_DIR EXTRA_DIR
@@ -37,7 +37,7 @@ npm install npm -g
 npm install -g jshint
 
 # install bash-git-prompt
-git clone https://github.com/magicmonty/bash-git-prompt.git .bash-git-prompt
+git clone https://github.com/magicmonty/bash-git-prompt.git ~/.bash-git-prompt
 # add line if it doesn't already exist
 grep -q -F 'source ~/.bash-git-prompt/gitprompt.sh' ~/.bashrc || echo 'source ~/.bash-git-prompt/gitprompt.sh' >> ~/.bashrc
 
@@ -53,5 +53,5 @@ if [ ! -d "$HOME/.vim-swap" ]; then
     mkdir ~/.vim-swap
 fi
 
-source "$DOTFILES_DIR/apps.sh"
+#source "$DOTFILES_DIR/apps.sh"
 #source "$DOTFILES_DIR/folders.sh"
