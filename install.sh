@@ -23,7 +23,7 @@ git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 vim +PluginInstall +qall
 
 # Install ack
-sudo cpan App:Ack
+echo 'yes' | sudo cpan App:Ack
 
 # Install nvm
 wget -qO- https://raw.githubusercontent.com/creationix/nvm/v0.31.0/install.sh | bash
@@ -55,3 +55,5 @@ fi
 
 #source "$DOTFILES_DIR/apps.sh"
 #source "$DOTFILES_DIR/folders.sh"
+
+source ~/.bashrc
