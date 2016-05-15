@@ -20,6 +20,8 @@ Plugin 'maksimr/vim-jsbeautify'
 Plugin 'tpope/vim-surround'
 Plugin 'jelera/vim-javascript-syntax'
 Plugin 'scrooloose/syntastic'
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -145,7 +147,6 @@ autocmd BufWritePre *.* :%s/\s\+$//e
 " force html syntax on hbs files
 au BufReadPost *.hbs set syntax=html
 
-
 "=====[ Highlight matches when jumping to next ]=============
 
     " This rewires n and N to do the highlighing...
@@ -183,3 +184,6 @@ au BufReadPost *.hbs set syntax=html
     endfunction
 
     :au BufNewFile,BufRead * call DetectNode()
+
+" enable airline
+set laststatus=2

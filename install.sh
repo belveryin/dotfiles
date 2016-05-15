@@ -4,7 +4,7 @@
 sudo apt-get install -y vim vim-gnome meld byobu
 
 # Get current dir (so run this script from anywhere)
-export DOTFILES_DIR EXTRA_DIR
+export DOTFILES_DIR
 DOTFILES_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
 # Update dotfiles itself first
