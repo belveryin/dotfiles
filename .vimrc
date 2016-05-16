@@ -22,6 +22,7 @@ Plugin 'jelera/vim-javascript-syntax'
 Plugin 'scrooloose/syntastic'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
+Plugin 'tpope/vim-fugitive'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -187,3 +188,10 @@ au BufReadPost *.hbs set syntax=html
 
 " enable airline
 set laststatus=2
+" the glyphs don't work with gvim
+if !has('gui_running')
+    let g:airline_powerline_fonts = 1
+endif
+" Broken down into easily includeable segments
+let g:syntastic_enable_signs=1
+let g:airline_section_c='%<%f\%w%h%m%r% [%{getcwd()}]'

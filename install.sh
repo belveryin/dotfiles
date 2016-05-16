@@ -22,6 +22,15 @@ git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 # Install Vundle plugins
 vim +PluginInstall +qall
 
+# Install airline glyphs
+wget https://github.com/powerline/powerline/raw/develop/font/PowerlineSymbols.otf
+wget https://github.com/powerline/powerline/raw/develop/font/10-powerline-symbols.conf
+mkdir ~/.fonts/
+mv PowerlineSymbols.otf ~/.fonts/
+fc-cache -vf ~/.fonts/
+mkdir -p ~/.config/fontconfig/conf.d/
+mv 10-powerline-symbols.conf ~/.config/fontconfig/conf.d/
+
 # Install ack
 echo 'yes' | sudo cpan App:Ack
 
@@ -43,13 +52,18 @@ grep -q -F 'source ~/.bash-git-prompt/gitprompt.sh' ~/.bashrc || echo 'source ~/
 
 # Getting rid of swap/backup/undo files in the current directory.
 # Create folders in the home dir:
-if [ ! -d "$HOME/.vim-backup" ]; then
+if [ ! -d "$HOME/.vim-backup" ]
+then
     mkdir ~/.vim-backup
 fi
-if [ ! -d "$HOME/.vim-undo" ]; then
+
+if [ ! -d "$HOME/.vim-undo" ]
+then
     mkdir ~/.vim-undo
 fi
-if [ ! -d "$HOME/.vim-swap" ]; then
+
+if [ ! -d "$HOME/.vim-swap" ]
+then
     mkdir ~/.vim-swap
 fi
 
