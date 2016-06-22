@@ -189,9 +189,9 @@ au BufReadPost *.hbs set syntax=html
 " enable airline
 set laststatus=2
 " the glyphs don't work with gvim
-if !has('gui_running')
-    let g:airline_powerline_fonts = 1
-endif
+" if !has('gui_running')
+    " let g:airline_powerline_fonts = 1
+" endif
 " Broken down into easily includeable segments
 let g:syntastic_enable_signs=1
 let g:airline_section_c='%<%f\%w%h%m%r% [%{getcwd()}]'
