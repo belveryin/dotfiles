@@ -55,6 +55,7 @@ set smartindent
 set autoindent
 
 "set line number
+set relativenumber
 set number
 
 "set incremental and highlight search
