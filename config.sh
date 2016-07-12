@@ -50,8 +50,8 @@ DOTFILES_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 # AlternateTab
 $DOTFILES_DIR/shell-extension-install.sh $GNOME_SHELL_VERSION 15
 
-# Applications Menu
-$DOTFILES_DIR/shell-extension-install.sh $GNOME_SHELL_VERSION 6
+# Caffeine
+$DOTFILES_DIR/shell-extension-install.sh $GNOME_SHELL_VERSION 517
 
 # Dash to Dock
 $DOTFILES_DIR/shell-extension-install.sh $GNOME_SHELL_VERSION 307
