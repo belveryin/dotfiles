@@ -1,32 +1,50 @@
-set nocompatible              " be iMproved, required
-filetype off                  " required
+"dein Scripts-----------------------------
+if &compatible
+  set nocompatible               " Be iMproved
+endif
 
-" set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
+" Required:
+set runtimepath+=~/.vim/dein/repos/github.com/Shougo/dein.vim
 
-" let Vundle manage Vundle, required
-Plugin 'VundleVim/Vundle.vim'
+" Required:
+call dein#begin(expand('~/.vim/dein'))
 
-Plugin 'scrooloose/nerdtree'
-Plugin 'kien/ctrlp.vim'
-Plugin 'tomtom/tcomment_vim'
-Plugin 'mileszs/ack.vim'
-Plugin 'altercation/vim-colors-solarized'
-Plugin 'ap/vim-css-color'
-Plugin 'tpope/vim-unimpaired'
-Plugin 'tpope/vim-repeat'
-Plugin 'maksimr/vim-jsbeautify'
-Plugin 'tpope/vim-surround'
-Plugin 'jelera/vim-javascript-syntax'
-Plugin 'scrooloose/syntastic'
-Plugin 'vim-airline/vim-airline'
-Plugin 'vim-airline/vim-airline-themes'
-Plugin 'tpope/vim-fugitive'
+" Let dein manage dein
+" Required:
+call dein#add('Shougo/dein.vim')
+call dein#add('scrooloose/nerdtree')
+call dein#add('kien/ctrlp.vim')
+call dein#add('tomtom/tcomment_vim')
+call dein#add('mileszs/ack.vim')
+call dein#add('altercation/vim-colors-solarized')
+call dein#add('ap/vim-css-color')
+call dein#add('tpope/vim-unimpaired')
+call dein#add('tpope/vim-repeat')
+call dein#add('maksimr/vim-jsbeautify')
+call dein#add('tpope/vim-surround')
+call dein#add('jelera/vim-javascript-syntax')
+call dein#add('scrooloose/syntastic')
+call dein#add('vim-airline/vim-airline')
+call dein#add('vim-airline/vim-airline-themes')
+call dein#add('tpope/vim-fugitive')
+call dein#add('editorconfig/editorconfig-vim')
+call dein#add('leafgarland/typescript-vim')
+call dein#add('Shougo/vimproc.vim', {'build' : 'make'})
+call dein#add('Quramy/tsuquyomi')
 
-" All of your Plugins must be added before the following line
-call vundle#end()            " required
-filetype plugin indent on    " required
+" Required:
+call dein#end()
+
+" Required:
+filetype plugin indent on
+syntax enable
+
+" If you want to install not installed plugins on startup.
+"if dein#check_install()
+"  call dein#install()
+"endif
+
+"End dein Scripts-------------------------
 
 " Getting rid of swap/backup/undo files in the current directory.
 " Create folders in your home dir:
@@ -117,10 +135,13 @@ let NERDTreeShowBookmarks=1
 "ctrlp
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
-let g:ctrlp_custom_ignore = '\v[\/](\.git|node_modules|bower_components|dist|coverage|tmp)$'
+let g:ctrlp_custom_ignore = {
+  \ 'dir':  '\v[\/](\.git|node_modules|bower_components|dist|coverage|tmp|target|\.idea)$',
+  \ 'file': '\v\.(class|log)$',
+  \ }
 
 "ack
-let g:ack_default_options = " -s -H --nocolor --nogroup --column --ignore-dir={build,docs,scratch,dist,bower_components,node_modules,coverage,tmp}"
+let g:ack_default_options = " -s -H --nocolor --nogroup --column --ignore-dir={build,docs,scratch,dist,bower_components,node_modules,coverage,tmp,log,target}"
 " let Ack_Exclude_Dirs = 'build docs'
 noremap <Leader>a :Ack! <cword><cr>
 nnoremap <Leader>f :Ack!<Space>
@@ -131,6 +152,10 @@ set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
 
+"disable by default (slow in java)
+" let g:syntastic_mode_map = { 'mode': 'passive', 'active_filetypes': [],'passive_filetypes': [] }
+" nnoremap <C-w>E :SyntasticCheck<CR> :SyntasticToggleMode<CR>
+
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_loc_list_height = 5
 let g:syntastic_auto_loc_list = 0
@@ -140,8 +165,16 @@ let g:syntastic_javascript_checkers=['jshint']
 " use eslint if .eslintrc is found
 autocmd FileType javascript let b:syntastic_checkers = findfile('.eslintrc.js', '.;') != '' ? ['eslint'] : ['jshint']
 
-"jsbeautifier
+let g:tsuquyomi_disable_quickfix = 1
+let g:tsuquyomi_disable_default_mappings = 1
+let g:syntastic_typescript_checkers = ['tsuquyomi'] " You shouldn't use 'tsc' checker.
+
+" jsbeautifier
 map <C-A-f> :call JsBeautify()<cr>
+
+" editorconfig
+" make sure that editorconfig works well with fugitive
+let g:EditorConfig_exclude_patterns = ['fugitive://.*']
 
 " delete trailing spaces at the end of the line
 autocmd BufWritePre *.* :%s/\s\+$//e

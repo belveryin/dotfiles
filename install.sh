@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # install vim meld byobu
-sudo apt-get install -y vim vim-gnome meld byobu
+sudo apt install -y vim vim-gnome meld byobu
 
 # Get current dir (so run this script from anywhere)
 export DOTFILES_DIR
@@ -16,11 +16,9 @@ ln -sfv "$DOTFILES_DIR/.psqlrc" ~
 ln -sfv "$DOTFILES_DIR/.gitignore" ~
 ln -sfv "$DOTFILES_DIR/.gitconfig" ~
 
-# Install Vundle
-git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
-
-# Install Vundle plugins
-vim +PluginInstall +qall
+mkdir -p ~/.vim/dein/repos/github.com/Shougo/
+git clone https://github.com/Shougo/dein.vim ~/.vim/dein/repos/github.com/Shougo/dein.vim
+vim +"call dein#install()"
 
 # Install airline glyphs
 wget https://github.com/powerline/powerline/raw/develop/font/PowerlineSymbols.otf
